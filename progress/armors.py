@@ -1,10 +1,10 @@
-class Armors():
-    async def __init__(self, ctx):
-        dbfunc = self.bot.database_handler
+async def Armors(self, ctx):
+    dbfunc = bot.database_handler
 
-        self.userid = ctx.author.id
-        self.helmet = await dbfunc.fetchValue('helmet', 'armors', self.userid)
-        self.chestplate = await dbfunc.fetchValue('chestplate', 'armors', self.userid)
-        self.leggings = await dbfunc.fetchValue('leggings', 'armors', self.userid)
-        self.boots = await dbfunc.fetchValue('boots', 'armors', self.userid)
-        self.sword = await dbfunc.fetchValue('sword', 'armors', self.userid)
+    userid = ctx.author.id
+    helmet = await dbfunc.fetchValue('helmet', 'armors', userid)
+    chestplate = await dbfunc.fetchValue('chestplate', 'armors', userid)
+    leggings = await dbfunc.fetchValue('leggings', 'armors', userid)
+    boots = await dbfunc.fetchValue('boots', 'armors', userid)
+    sword = await dbfunc.fetchValue('sword', 'armors', userid)
+    
