@@ -10,17 +10,20 @@ class help(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def help(self, ctx):
         await ctx.send('''
-Welcome to this useless bot that does nothing else than Monopoly
+__Before Game__
+ep create - create game (gg)
+ep join - join game (gg)
+ep leave - leave game (gg)
+ep start - start game (gg)
+ep stop - stop game(gg)
 
 __During Game__
-m.create - create game (gg)
-m.join - join game (gg)
-m.leave - leave game (gg)
-m.start - start game (gg)
-m.stop (gg)
+ep play - play card
+ep draw - draw card
+ep hand - show player's hand
 
 __Misc__
-m.rule - rules (gg)
+ep rule - rules (gg)
 ''')
 
 

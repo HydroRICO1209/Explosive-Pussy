@@ -5,8 +5,8 @@ from progress.database import Database
 
 intents = discord.Intents.all()
 intents.members = True
-prefixxx  = ['ep.', 'Ep.', 'eP.', 'EP.']
-bot = commands.Bot(command_prefix = prefixxx, case_insensitive=True, activity=discord.Game(name="rpm start"),intents=intents)
+prefixxx  = ['ep ', 'Ep ', 'eP ', 'EP ']
+bot = commands.Bot(command_prefix = prefixxx, case_insensitive=True, activity=discord.Game(name="ep help"),intents=intents)
 
 #######################################################################################MAIN_CODE#######################################################################################
 @bot.event
