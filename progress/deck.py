@@ -1,5 +1,5 @@
 async def Deck(ctx):
-    dbfunc = bot.database_handler
+    dbfunc = ctx.bot.database_handler
 
     userid = ctx.author.id
     matchid = ctx.channel.id

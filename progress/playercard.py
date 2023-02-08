@@ -1,5 +1,5 @@
 async def Playercard(ctx):
-    dbfunc = bot.database_handler
+    dbfunc = ctx.bot.database_handler
 
     userid = ctx.author.id
     

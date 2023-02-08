@@ -1,5 +1,5 @@
 async def Match(ctx):
-    dbfunc = bot.database_handler
+    dbfunc = ctx.bot.database_handler
 
     cid = ctx.channel.id
     
