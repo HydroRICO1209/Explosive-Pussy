@@ -1,4 +1,4 @@
-async def Playerlist(self, ctx):
+async def Playerlist(ctx):
     dbfunc = bot.database_handler
 
     cid = ctx.channel.id

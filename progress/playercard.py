@@ -1,4 +1,4 @@
-async def Playercard(self, ctx):
+async def Playercard(ctx):
     dbfunc = bot.database_handler
 
     userid = ctx.author.id

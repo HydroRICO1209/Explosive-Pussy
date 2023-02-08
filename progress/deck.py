@@ -1,4 +1,4 @@
-async def Deck(self, ctx):
+async def Deck(ctx):
     dbfunc = bot.database_handler
 
     userid = ctx.author.id

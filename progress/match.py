@@ -1,4 +1,4 @@
-async def Match(self, ctx):
+async def Match(ctx):
     dbfunc = bot.database_handler
 
     cid = ctx.channel.id
