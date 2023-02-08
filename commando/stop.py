@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-
+from progress.match import *
 
 class stop(commands.Cog):
     def __init__(self, bot):
@@ -13,9 +13,8 @@ class stop(commands.Cog):
             userid = ctx.author.id
             username = ctx.author.name
             channelid = ctx.channel.id
-            matchhostid = (await self.bot.db.fetch('SELECT matchhostid FROM match WHERE matchid = $1',(channelid)))[0]["matchhostid"]
-
-            if matchhostid == userid:
+            
+            if match['matchhostid'] == userid:
                 #all table
                 await self.bot.db.execute('''
 DELETE FROM match
@@ -34,9 +33,9 @@ DELETE FROM playerlist
 WHERE matchid = $1
 ''',channelid)
 
-                #property table
+                #deck table
                 await self.bot.db.execute('''
-DELETE FROM property
+DELETE FROM deck
 WHERE matchid = $1
 ''',channelid)
 
