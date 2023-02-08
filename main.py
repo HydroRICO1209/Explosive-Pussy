@@ -1,6 +1,5 @@
 import discord, os, random, asyncio, discord.ext.commands, asyncpg
 from discord.ext import commands
-from progress.my_emote import *
 from progress.database import Database
 
 intents = discord.Intents.all()

@@ -15,7 +15,7 @@ class create(commands.Cog):
         username = ctx.author.name
         userid = ctx.author.id
         cid = ctx.channel.id
-        created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', (ctx.channel.id))
+        created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', (cid))
 
         if created == []:
             #deck table
