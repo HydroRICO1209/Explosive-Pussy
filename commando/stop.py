@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 from progress.match import *
+from progress.playerlist import *
 
 class stop(commands.Cog):
     def __init__(self, bot):
@@ -10,20 +11,16 @@ class stop(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def stop(self, ctx):
         try:
+            playerlist = Playerlist(ctx)
+            match = Match(ctx)
             userid = ctx.author.id
             username = ctx.author.name
             channelid = ctx.channel.id
             
             if match['matchhostid'] == userid:
-                #all table
+                #match table
                 await self.bot.db.execute('''
 DELETE FROM match
-WHERE matchid = $1
-''',channelid)
-
-                #player table
-                await self.bot.db.execute('''
-DELETE FROM player
 WHERE matchid = $1
 ''',channelid)
 
@@ -39,6 +36,34 @@ DELETE FROM deck
 WHERE matchid = $1
 ''',channelid)
 
+
+            #playercard table
+            p1 = playerlist['player1id']
+            p2 = playerlist['player2id']
+            p3 = playerlist['player3id']
+            p4 = playerlist['player4id']
+            
+            if match['matchtotalplayer'] == 1:
+                await self.bot.db.execute('''
+DELETE FROM player
+WHERE playerid = $1
+''',p1)
+                if match['matchtotalplayer'] == 2:
+                    await self.bot.db.execute('''
+DELETE FROM player
+WHERE playerid = $1
+''',p2)
+                    if match['matchtotalplayer'] == 3:
+                        await self.bot.db.execute('''
+DELETE FROM player
+WHERE playerid = $1
+''',p3)
+                        if match['matchtotalplayer'] == 4:
+                            await self.bot.db.execute('''
+DELETE FROM player
+WHERE playerid = $1
+''',p4)
+                            
                 await ctx.send(f'Game stopped by {username}')
             else:
                 await ctx.send(f'{username}, you are not the host')

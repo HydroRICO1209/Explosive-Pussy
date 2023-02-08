@@ -52,13 +52,13 @@ VALUES ($1, $2, 1, 1, 1)
             p3 = playerlist['player3id']
             p4 = playerlist['player4id']
             
-            if match['matchtotalplayer'] == 1:
+            if match['matchtotalplayer'] >= 1:
                 long += f'1) <@{p1}>\n'
-                if match['matchtotalplayer'] == 2:
+                if match['matchtotalplayer'] >= 2:
                     long += f'2) <@{p2}>\n'
-                    if match['matchtotalplayer'] == 2:
+                    if match['matchtotalplayer'] >= 3:
                         long += f'3) <@{p3}>\n'
-                        if match['matchtotalplayer'] == 2:
+                        if match['matchtotalplayer'] >= 4:
                             long += f'4) <@{p4}>\n'
 
             embed = discord.Embed(
