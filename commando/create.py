@@ -10,8 +10,8 @@ class create(commands.Cog):
     @commands.command()
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def create(self, ctx):
-        match = await Match(ctx)
-        playerlist = await Playerlist(ctx)
+        match = await Match(self, ctx)
+        playerlist = await Playerlist(self, ctx)
         username = ctx.author.name
         userid = ctx.author.id
         cid = ctx.channel.id
