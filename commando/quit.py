@@ -29,23 +29,22 @@ class MyCog(commands.Cog):
                 await ctx.send('check 2')
                 if userid == playerlist['player1id']:
                     await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting == True
+                    is_quitting = True
                 elif userid == playerlist['player2id']:
                     await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting == True
+                    is_quitting = True
                 elif userid == playerlist['player3id']:
                     await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting == True
+                    is_quitting = True
                 elif userid == playerlist['player4id']:
                     await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting == True
+                    is_quitting = True
                 else:
                     await ctx.send(f'**{username}**, you are not in the game')
             await ctx.send('check 3 ')
             if is_quitting == True:
                 await self.bot.db.execute('''
-    DELETE FROM playercard
-    WHERE playerid = $1
+DELETE FROM playercard WHERE playerid = $1
 ''',userid)
                 await ctx.send(f'**{username}**, you had left the game successfully')
 
