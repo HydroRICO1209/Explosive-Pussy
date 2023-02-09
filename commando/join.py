@@ -17,6 +17,7 @@ class join(commands.Cog):
             userid = ctx.author.id
             username = ctx.author.name
             cid = ctx.channel.id
+            has_joined = False
             
             #game started/ joined
             if playerlist['player1id'] == None:
@@ -29,17 +30,23 @@ class join(commands.Cog):
             #find empty seat
             elif playerlist['player2id'] == 1:
                 await dbfunc.setIntValue('player2id', 'playerlist', cid, userid, 'matchid')
-                await ctx.send(f'**{username}** joined')
+                has_joined = True
             elif playerlist['player3id'] == 1:
                 await dbfunc.setIntValue('player3id', 'playerlist', cid, userid, 'matchid')
-                await ctx.send(f'**{username}** joined')
+                has_joined = True
             elif playerlist['player4id'] == 1:
                 await dbfunc.setIntValue('player4id', 'playerlist', cid, userid, 'matchid')
-                await ctx.send(f'**{username}** joined')
+                has_joined = True
             else:
                 await ctx.send(f'**{username}**, the game is full')
             
-            
+            if has_joined == True:
+                await self.bot.db.execute('''
+INSERT INTO playercard (playerid, card1, card2, card3)
+VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo')
+''',userid)
+                await ctx.send(f'**{username}** joined')
+                
         except Exception as e:
             print(e)
 
