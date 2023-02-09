@@ -2,7 +2,7 @@ from discord.ext import commands
 import discord
 
 
-class MyCog(commands.Cog):
+class Monkeyballs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -20,4 +20,4 @@ class MyCog(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(MyCog(bot))
+    await bot.add_cog(Monkeyballs(bot))
