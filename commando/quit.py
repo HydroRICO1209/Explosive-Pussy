@@ -7,9 +7,9 @@ class MyCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = 'leave')
     @commands.cooldown(1, 1, commands.BucketType.user)
-    async def leave(self, ctx):
+    async def quit(self, ctx):
         dbfunc = self.bot.database_handler
         userid = ctx.author.id
         cid = ctx.channel.id
@@ -23,14 +23,16 @@ class MyCog(commands.Cog):
         else:
             if userid == playerlist['player1id']:
                 await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, matchid)
+                await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player2id']:
                 await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, matchid)
+                await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player3id']:
                 await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, matchid)
+                await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player4id']:
                 await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, matchid)
-            await ctx.send(f'**{username}**, you had left the game successfully')
-            
+                await ctx.send(f'**{username}**, you had left the game successfully')
 
 
 async def setup(bot):
