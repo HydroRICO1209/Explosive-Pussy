@@ -19,9 +19,10 @@ async def setup_hook() -> None:
     bot.db: asyncpg.Pool = await asyncpg.create_pool(os.getenv('DATABASE_URL'))
     bot.database_handler = Database(bot)
 
-######################################################
-#######################COMMANDS#######################
-######################################################  
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(f'**{ctx.author.name}**, this command doesnt exist, check your spellling maybe??')
 
 async def main():
     async with bot:

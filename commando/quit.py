@@ -12,8 +12,10 @@ class MyCog(commands.Cog):
     async def leave(self, ctx):
         dbfunc = self.bot.database_handler
         userid = ctx.author.id
+        cid = ctx.channel.id
         match = await Match(ctx)
         playerlist = await Playerlist(ctx)
+        
         created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', (cid))
         
         if created == []:
