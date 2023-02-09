@@ -12,8 +12,8 @@ async def shufflestart(ctx):
         while is_done == False:
             randnum = random.randint(1,8)
             if deck[f'card{randnum}'] == 'rip bozo':
-                item = f'card{1}'
-                await dbfunc.setStrValue(card, 'deck', cid, card_list[randnum], 'matchid')
+                item = f'card{randnum}'
+                await dbfunc.setStrValue(item, 'deck', cid, card, 'matchid')
                 is_done = True
             else:
                 is_done = False
