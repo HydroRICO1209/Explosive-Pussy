@@ -21,20 +21,23 @@ class MyCog(commands.Cog):
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
         else:
-            if userid == playerlist['player1id']:
-                await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
-                await ctx.send(f'**{username}**, you had left the game successfully')
-            elif userid == playerlist['player2id']:
-                await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, 'matchid')
-                await ctx.send(f'**{username}**, you had left the game successfully')
-            elif userid == playerlist['player3id']:
-                await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, 'matchid')
-                await ctx.send(f'**{username}**, you had left the game successfully')
-            elif userid == playerlist['player4id']:
-                await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, 'matchid')
-                await ctx.send(f'**{username}**, you had left the game successfully')
+            if userid == match['matchhostid']:
+                await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
-                await ctx.send(f'**{username}**, you are not in the game')
+                if userid == playerlist['player1id']:
+                    await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
+                    await ctx.send(f'**{username}**, you had left the game successfully')
+                elif userid == playerlist['player2id']:
+                    await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, 'matchid')
+                    await ctx.send(f'**{username}**, you had left the game successfully')
+                elif userid == playerlist['player3id']:
+                    await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, 'matchid')
+                    await ctx.send(f'**{username}**, you had left the game successfully')
+                elif userid == playerlist['player4id']:
+                    await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, 'matchid')
+                    await ctx.send(f'**{username}**, you had left the game successfully')
+                else:
+                    await ctx.send(f'**{username}**, you are not in the game')
 
 
 async def setup(bot):
