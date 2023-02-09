@@ -12,6 +12,7 @@ class start(commands.Cog):
         try:
             match = await Match(ctx)
             dbfunc = self.bot.database_handler
+            username = ctx.author.name
             userid = ctx.author.id
             cid = ctx.channel.id
 
@@ -19,9 +20,9 @@ class start(commands.Cog):
                 await dbfunc.setBoolValue('matchstarted', match, cid, True, 'matchid')
                 await ctx.send(f"<@{userid}>'s match has started")
             elif match['matchhostid'] != cid:
-                await ctx.send('you are not the host')
+                await ctx.send(f'**{username}**, you are not the host')
             elif match['matchhoststarted'] == True:
-                await ctx.send('Game has already been started')
+                await ctx.send(f'**{username}**, game has already been started')
                 
             
         except Exception as e:

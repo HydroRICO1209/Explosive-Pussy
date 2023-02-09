@@ -10,6 +10,8 @@ class monkeyballs(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def monkeyballs(self, ctx):
         nama = None
+        userid = ctx.author.id
+        
         if userid == 564103314673762304:
             nama = 'zyong'
             
