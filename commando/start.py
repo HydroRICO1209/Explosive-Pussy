@@ -10,7 +10,7 @@ class start(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def start(self, ctx):
         try:
-            match = Match(ctx)
+            match = await Match(ctx)
             dbfunc = self.bot.database_handler
             userid = ctx.author.id
             cid = ctx.channel.id
@@ -22,8 +22,8 @@ class start(commands.Cog):
                 await ctx.send('you are not the host')
             elif match['matchhoststarted'] == True:
                 await ctx.send('Game has already been started')
-
-            await ctx.send('command ended')
+                
+            
         except Exception as e:
             print(e)
 

@@ -11,8 +11,8 @@ class stop(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def stop(self, ctx):
         try:
-            playerlist = Playerlist(ctx)
-            match = Match(ctx)
+            playerlist = await Playerlist(ctx)
+            match = await Match(ctx)
             userid = ctx.author.id
             username = ctx.author.name
             channelid = ctx.channel.id

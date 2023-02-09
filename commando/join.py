@@ -13,6 +13,7 @@ class join(commands.Cog):
         try:
             match = Match(ctx)
             playerlist = Playerlist(ctx)
+            dbfunc = self.bot.database_handler
             userid = ctx.author.id
             username = ctx.author.name
             cid = ctx.channel.id
@@ -25,25 +26,13 @@ class join(commands.Cog):
 
             #find empty seat
             elif player2id == 0:
-                await self.bot.db.execute('''
-UPDATE playerlist
-SET player2id = $1,
-WHERE matchid = $2
-''', userid, cid)
+                await dbfunc.setIntValue('player2id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
             elif player3id == 0:
-                await self.bot.db.execute('''
-UPDATE playerlist
-SET player3id = $1,
-WHERE matchid = $2
-''', userid, cid)
+                await dbfunc.setIntValue('player3id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
             elif player4id == 0:
-                await self.bot.db.execute('''
-UPDATE playerlist
-SET player4id = $1,
-WHERE matchid = $2
-''', userid, cid)
+                await dbfunc.setIntValue('player4id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
             else:
                 await ctx.send(f'{username}, the game is full')
