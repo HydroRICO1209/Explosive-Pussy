@@ -12,6 +12,7 @@ class create(commands.Cog):
     async def create(self, ctx):
         match = await Match(ctx)
         playerlist = await Playerlist(ctx)
+        
         username = ctx.author.name
         userid = ctx.author.id
         cid = ctx.channel.id
