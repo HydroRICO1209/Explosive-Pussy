@@ -25,13 +25,13 @@ class join(commands.Cog):
                 await ctx.send(f'Too late {username}, game started')
 
             #find empty seat
-            elif player2id == 0:
+            elif playerlist['player2id'] == 0:
                 await dbfunc.setIntValue('player2id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
-            elif player3id == 0:
+            elif playerlist['player3id'] == 0:
                 await dbfunc.setIntValue('player3id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
-            elif player4id == 0:
+            elif playerlist['player4id'] == 0:
                 await dbfunc.setIntValue('player4id', 'playerlist', cid, userid, 'matchid')
                 await ctx.send(f'{username}joined')
             else:

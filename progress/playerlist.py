@@ -1,6 +1,5 @@
 async def Playerlist(ctx):
     dbfunc = ctx.bot.database_handler
-
     cid = ctx.channel.id
     
     player1id = await dbfunc.fetchValue('player1id', 'playerlist', cid, 'matchid')
