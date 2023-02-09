@@ -12,7 +12,7 @@ class test2(commands.Cog):
         if ctx.author.id == 757508305256972338:
             dbfunc = self.bot.database_handler
             cid = ctx.channel.id
-            await dbfunc.setIntValue('nombor', 'test', cid, arg, matchid)
+            await dbfunc.setIntValue('nombor', 'test', cid, arg, 'matchid')
             await ctx.send(f'db should be {arg} now, or you are fked too')
         else:
             await ctx.send('Would you mind fucking off?')
