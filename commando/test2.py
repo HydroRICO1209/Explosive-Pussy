@@ -13,7 +13,7 @@ class test2(commands.Cog):
             dbfunc = self.bot.database_handler
             cid = ctx.channel.id
             await dbfunc.setIntValue('nombor', 'test', cid, arg, matchid)
-            await ctx.send('noice')
+            await ctx.send(f'db should be {arg} now, or you are fked too')
         else:
             await ctx.send('Would you mind fucking off?')
 async def setup(bot):
