@@ -8,3 +8,14 @@ cat_list = [
     'Feral Cat',
     'Taco Cat'
 ]
+
+card_list = [
+    'Defuse',
+    'Defuse',
+    'Explosive Pussy',
+    'Beard Cat',
+    'Beard Cat',
+    'Feral Cat',
+    'Taco Cat',
+    'Taco Cat'
+]
