@@ -66,9 +66,9 @@ WHERE matchid = $1
     WHERE matchid = $1
     ''',channelid)
                                 
-                await ctx.send(f'Game stopped by {username}')
+                await ctx.send(f'Game stopped by **{username}**')
             else:
-                await ctx.send(f'{username}, you are not the host')
+                await ctx.send(f'**{username}**, you are not the host')
 
         except Exception as e:
             print(e)

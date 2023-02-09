@@ -50,7 +50,7 @@ VALUES ($1, $2, 1, 1, 1)
             p2 = playerlist['player2id']
             p3 = playerlist['player3id']
             p4 = playerlist['player4id']
-            
+
             if match['matchtotalplayer'] >= 1:
                 long += f'1) <@{p1}>\n'
                 if match['matchtotalplayer'] >= 2:
