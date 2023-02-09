@@ -22,11 +22,9 @@ class MyCog(commands.Cog):
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
         else:
-            await ctx.send('check 1')
             if userid == match['matchhostid']:
                 await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
-                await ctx.send('check 2')
                 if userid == playerlist['player1id']:
                     await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
                     is_quitting = True
@@ -41,7 +39,7 @@ class MyCog(commands.Cog):
                     is_quitting = True
                 else:
                     await ctx.send(f'**{username}**, you are not in the game')
-            await ctx.send('check 3 ')
+
             if is_quitting == True:
                 await self.bot.db.execute('''
 DELETE FROM playercard WHERE playerid = $1
