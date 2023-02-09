@@ -15,7 +15,7 @@ class start(commands.Cog):
             userid = ctx.author.id
             cid = ctx.channel.id
 
-            if match['matchhostid'] == cid and match['matchstarted'] == False:
+            if match['matchhostid'] == userid and match['matchstarted'] == False:
                 await dbfunc.setBoolValue('matchstarted', match, cid, True, matchid)
                 await ctx.send(f"<@{userid}>'s match has started")
             elif match['matchhostid'] != cid:
