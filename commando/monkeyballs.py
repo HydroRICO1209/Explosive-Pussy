@@ -14,6 +14,12 @@ class monkeyballs(commands.Cog):
         
         if userid == 564103314673762304:
             nama = 'zyong'
+        elif userid == 909299929854398474:
+            nama = 'hong ming'
+        elif userid == 719081338862567475:
+            nama = 'qameel'
+        elif userid == 757508305256972338:
+            nama = 'juan han'
             
         if nama == None:
             await ctx.send(f"lemme guess, its {ctx.author.name}")
