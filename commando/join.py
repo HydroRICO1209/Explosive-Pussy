@@ -21,7 +21,7 @@ class join(commands.Cog):
             #game started/ joined
             if playerlist['player1id'] == None:
                 await ctx.send(f'**{username}**, game has not been created.')
-            if userid in (playerlist['player1id'], playerlist['player2id'], playerlist['player3id'], playerlist['player4id']):
+            elif userid in (playerlist['player1id'], playerlist['player2id'], playerlist['player3id'], playerlist['player4id']):
                 await ctx.send(f'**{username}**, you are already in there')
             elif match['matchstarted'] == True:
                 await ctx.send(f'Too late **{username}**, game started')
