@@ -11,8 +11,8 @@ class join(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def join(self, ctx):
         try:
-            match = Match(ctx)
-            playerlist = Playerlist(ctx)
+            match = await Match(ctx)
+            playerlist = await Playerlist(ctx)
             dbfunc = self.bot.database_handler
             userid = ctx.author.id
             username = ctx.author.name
