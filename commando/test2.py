@@ -8,12 +8,13 @@ class test2(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 1, commands.BucketType.user)
-    async def test2(self, ctx):
-        await ctx.send('1')
-        
-        var = await (self.bot.db.fetch('SELECT matchstarted FROM match WHERE matchid = $1', (ctx.channel.id)))[0]['matchstarted']
-        await ctx.send(var)
-        await ctx.send('2')
-
+    async def test2(self, ctx, arg):
+        if ctx.author.id == 757508305256972338:
+            dbfunc = self.bot.database_handler
+            cid = ctx.channel.id
+            await dbfunc.setIntValue('nombor', 'test', cid, arg, matchid)
+            await ctx.send('noice')
+        else:
+            await ctx.send('Would you mind fucking off?')
 async def setup(bot):
     await bot.add_cog(test2(bot))
