@@ -17,7 +17,9 @@ class stop(commands.Cog):
             username = ctx.author.name
             channelid = ctx.channel.id
             
-            if match['matchhostid'] == userid:
+            if match['matchhostid'] == None:
+                await ctx.send(f'**{username}**, game has not been created.')
+            elif match['matchhostid'] == userid:
                 #match table
                 await self.bot.db.execute('''
 DELETE FROM match
@@ -31,39 +33,39 @@ WHERE matchid = $1
 ''',channelid)
 
 
-            #playercard table
-            p1 = playerlist['player1id']
-            p2 = playerlist['player2id']
-            p3 = playerlist['player3id']
-            p4 = playerlist['player4id']
-            
-            if match['matchtotalplayer'] >= 1:
-                await self.bot.db.execute('''
-DELETE FROM playercard
-WHERE playerid = $1
-''',p1)
-                if match['matchtotalplayer'] >= 2:
+                #playercard table
+                p1 = playerlist['player1id']
+                p2 = playerlist['player2id']
+                p3 = playerlist['player3id']
+                p4 = playerlist['player4id']
+                
+                if match['matchtotalplayer'] >= 1:
                     await self.bot.db.execute('''
-DELETE FROM playercard
-WHERE playerid = $1
-''',p2)
-                    if match['matchtotalplayer'] >= 3:
+    DELETE FROM playercard
+    WHERE playerid = $1
+    ''',p1)
+                    if match['matchtotalplayer'] >= 2:
                         await self.bot.db.execute('''
-DELETE FROM playercard
-WHERE playerid = $1
-''',p3)
-                        if match['matchtotalplayer'] >= 4:
+    DELETE FROM playercard
+    WHERE playerid = $1
+    ''',p2)
+                        if match['matchtotalplayer'] >= 3:
                             await self.bot.db.execute('''
-DELETE FROM playercard
-WHERE playerid = $1
-''',p4)
-                            
-                #playerlist table
-                await self.bot.db.execute('''
-DELETE FROM playerlist
-WHERE matchid = $1
-''',channelid)
-                            
+    DELETE FROM playercard
+    WHERE playerid = $1
+    ''',p3)
+                            if match['matchtotalplayer'] >= 4:
+                                await self.bot.db.execute('''
+    DELETE FROM playercard
+    WHERE playerid = $1
+    ''',p4)
+                                
+                    #playerlist table
+                    await self.bot.db.execute('''
+    DELETE FROM playerlist
+    WHERE matchid = $1
+    ''',channelid)
+                                
                 await ctx.send(f'Game stopped by {username}')
             else:
                 await ctx.send(f'{username}, you are not the host')
