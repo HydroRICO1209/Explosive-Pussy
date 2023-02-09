@@ -16,7 +16,7 @@ class MyCog(commands.Cog):
         match = await Match(ctx)
         playerlist = await Playerlist(ctx)
         is_quitting = False
-        created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', (cid))
+        created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', cid)
         
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
