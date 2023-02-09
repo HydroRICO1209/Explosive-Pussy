@@ -23,17 +23,17 @@ class MyCog(commands.Cog):
         else:
             if userid == playerlist['player1id']:
                 await ctx.send(1)
-                await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, matchid)
+                await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
                 await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player2id']:
                 await ctx.send(2)
-                await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, matchid)
+                await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, 'matchid')
                 await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player3id']:
-                await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, matchid)
+                await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, 'matchid')
                 await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player4id']:
-                await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, matchid)
+                await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, 'matchid')
                 await ctx.send(f'**{username}**, you had left the game successfully')
             await ctx.send('rip')
 
