@@ -16,7 +16,7 @@ class start(commands.Cog):
             cid = ctx.channel.id
 
             if match['matchhostid'] == userid and match['matchstarted'] == False:
-                await dbfunc.setBoolValue('matchstarted', match, cid, True, matchid)
+                await dbfunc.setBoolValue('matchstarted', match, cid, True, 'matchid')
                 await ctx.send(f"<@{userid}>'s match has started")
             elif match['matchhostid'] != cid:
                 await ctx.send('you are not the host')

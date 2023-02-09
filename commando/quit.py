@@ -22,7 +22,7 @@ class MyCog(commands.Cog):
             await ctx.send(f'**{username}**, game has not been created')
         else:
             if userid == playerlist['player1id']:
-                await ctx.send(1)
+                
                 await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
                 await ctx.send(f'**{username}**, you had left the game successfully')
             elif userid == playerlist['player2id']:
