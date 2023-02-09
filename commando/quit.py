@@ -12,6 +12,7 @@ class MyCog(commands.Cog):
     async def quit(self, ctx):
         dbfunc = self.bot.database_handler
         userid = ctx.author.id
+        username = ctx.author.name
         cid = ctx.channel.id
         match = await Match(ctx)
         playerlist = await Playerlist(ctx)
@@ -21,6 +22,7 @@ class MyCog(commands.Cog):
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
         else:
+            await ctx.send('check 1')
             if userid == match['matchhostid']:
                 await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
