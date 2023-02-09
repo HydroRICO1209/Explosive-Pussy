@@ -22,7 +22,6 @@ class MyCog(commands.Cog):
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
         else:
-            await ctx.send('check 1')
             if userid == match['matchhostid']:
                 await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
