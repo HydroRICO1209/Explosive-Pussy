@@ -7,7 +7,7 @@ class MyCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = 'leave')
+    @commands.command(aliases = ['leave'])
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def quit(self, ctx):
         dbfunc = self.bot.database_handler
