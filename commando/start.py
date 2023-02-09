@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-
+from progress.match import *
 
 class start(commands.Cog):
     def __init__(self, bot):
@@ -10,15 +10,17 @@ class start(commands.Cog):
     @commands.cooldown(1, 1, commands.BucketType.user)
     async def start(self, ctx):
         try:
-            channelid = ctx.channel.id
-            await ctx.send('roger that')
+            match = Match(ctx)
+            dbfunc = self.bot.database_handler
+            userid = ctx.author.id
+            cid = ctx.channel.id
 
-            if db[f'{channelid}matchhost'] == ctx.author.id and db[f'{channelid}matchstarted'] == False:
-                db[f'{channelid}matchstarted'] = True
-                await ctx.send('Match started')
-            elif db[f'{channelid}matchhost'] != ctx.author.id:
+            if match['matchhostid'] == cid and match['matchstarted'] == False:
+                await dbfunc.setBoolValue('matchstarted', match, cid, True, matchid)
+                await ctx.send(f"<@{userid}>'s match has started")
+            elif match['matchhostid'] != cid:
                 await ctx.send('you are not the host')
-            elif db[f'{channelid}matchstarted'] == True:
+            elif match['matchhoststarted'] == True:
                 await ctx.send('Game has already been started')
 
             await ctx.send('command ended')

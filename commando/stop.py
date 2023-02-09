@@ -24,12 +24,6 @@ DELETE FROM match
 WHERE matchid = $1
 ''',channelid)
 
-                #playerlist table
-                await self.bot.db.execute('''
-DELETE FROM playerlist
-WHERE matchid = $1
-''',channelid)
-
                 #deck table
                 await self.bot.db.execute('''
 DELETE FROM deck
@@ -43,26 +37,32 @@ WHERE matchid = $1
             p3 = playerlist['player3id']
             p4 = playerlist['player4id']
             
-            if match['matchtotalplayer'] == 1:
+            if match['matchtotalplayer'] >= 1:
                 await self.bot.db.execute('''
-DELETE FROM player
+DELETE FROM playercard
 WHERE playerid = $1
 ''',p1)
-                if match['matchtotalplayer'] == 2:
+                if match['matchtotalplayer'] >= 2:
                     await self.bot.db.execute('''
-DELETE FROM player
+DELETE FROM playercard
 WHERE playerid = $1
 ''',p2)
-                    if match['matchtotalplayer'] == 3:
+                    if match['matchtotalplayer'] >= 3:
                         await self.bot.db.execute('''
-DELETE FROM player
+DELETE FROM playercard
 WHERE playerid = $1
 ''',p3)
-                        if match['matchtotalplayer'] == 4:
+                        if match['matchtotalplayer'] >= 4:
                             await self.bot.db.execute('''
-DELETE FROM player
+DELETE FROM playercard
 WHERE playerid = $1
 ''',p4)
+                            
+                #playerlist table
+                await self.bot.db.execute('''
+DELETE FROM playerlist
+WHERE matchid = $1
+''',channelid)
                             
                 await ctx.send(f'Game stopped by {username}')
             else:
