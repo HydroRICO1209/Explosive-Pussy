@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-from progress.shufflestart import *
+from progress.shuffle import shufflestart
 
 class test2(commands.Cog):
     def __init__(self, bot):
