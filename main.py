@@ -23,6 +23,8 @@ async def setup_hook() -> None:
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send(f'**{ctx.author.name}**, this command doesnt exist, check your spellling maybe??')
+    else:
+        raise error
 
 async def main():
     async with bot:
