@@ -11,7 +11,7 @@ class test2(commands.Cog):
     async def test2(self, ctx):
         if ctx.author.id == 757508305256972338:
             await shufflestart(ctx)
-            deck = Deck(ctx)
+            deck = await Deck(ctx)
             await ctx.send(f'''
 __DECK__
 matchid: {deck['matchid']}
