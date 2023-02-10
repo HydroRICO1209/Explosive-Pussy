@@ -15,7 +15,7 @@ class stop(commands.Cog):
             match = await Match(ctx)
             userid = ctx.author.id
             username = ctx.author.name
-            channelid = ctx.channel.id
+            cid = ctx.channel.id
             
             if match['matchhostid'] == None:
                 await ctx.send(f'**{username}**, game has not been created.')
@@ -24,13 +24,13 @@ class stop(commands.Cog):
                 await self.bot.db.execute('''
 DELETE FROM match
 WHERE matchid = $1
-''',channelid)
+''',cid)
 
                 #deck table
                 await self.bot.db.execute('''
 DELETE FROM deck
 WHERE matchid = $1
-''',channelid)
+''',cid)
 
 
                 #playercard table
@@ -64,7 +64,7 @@ WHERE playerid = $1
                     await self.bot.db.execute('''
 DELETE FROM playerlist
 WHERE matchid = $1
-''',channelid)
+''',cid)
                                 
                 await ctx.send(f'Game stopped by **{username}**')
             else:

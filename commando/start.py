@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 from progress.match import *
+from progress.shuffle import shufflestart
 
 class start(commands.Cog):
     def __init__(self, bot):
@@ -18,6 +19,7 @@ class start(commands.Cog):
 
             if match['matchhostid'] == userid and match['matchstarted'] == False:
                 await dbfunc.setBoolValue('matchstarted', match, cid, True, 'matchid')
+                await shufflestart(ctx)
                 await ctx.send(f"<@{userid}>'s match has started")
             elif match['matchhostid'] != cid:
                 await ctx.send(f'**{username}**, you are not the host')
