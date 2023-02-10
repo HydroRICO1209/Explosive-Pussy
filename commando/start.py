@@ -27,7 +27,7 @@ class start(commands.Cog):
                 await ctx.send(f'**{username}**, game has already been started')
             elif match['matchtotalplayer'] == 1:
                 if userid == 757508305256972338:
-                    await ctx.mention('there is only you bruh')
+                    await ctx.send(f'**{username}**, there is only you bruh')
                 else:
                     await ctx.send(f'**{username}**, find some friends that doesnt exist?')
             
