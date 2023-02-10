@@ -1,7 +1,5 @@
 async def Deck(ctx):
     dbfunc = ctx.bot.database_handler
-
-    userid = ctx.author.id
     cid = ctx.channel.id
     
     card1 = await dbfunc.fetchValue('card1', 'deck', cid, 'matchid')
@@ -12,10 +10,10 @@ async def Deck(ctx):
     card6 = await dbfunc.fetchValue('card6', 'deck', cid, 'matchid')
     card7 = await dbfunc.fetchValue('card7', 'deck', cid, 'matchid')
     card8 = await dbfunc.fetchValue('card8', 'deck', cid, 'matchid')
-    card9 = await dbfunc.fetchValue('card9', 'deck', userid, 'playerid')
-    card10 = await dbfunc.fetchValue('card10', 'deck', userid, 'playerid')
-    card11 = await dbfunc.fetchValue('card11', 'deck', userid, 'playerid')
-    card12 = await dbfunc.fetchValue('card12', 'deck', userid, 'playerid')
+    card9 = await dbfunc.fetchValue('card9', 'deck', cid, 'matchid')
+    card10 = await dbfunc.fetchValue('card10', 'deck', cid, 'matchid')
+    card11 = await dbfunc.fetchValue('card11', 'deck', cid, 'matchid')
+    card12 = await dbfunc.fetchValue('card12', 'deck', cid, 'matchid')
     
     deck = {
         'card1': card1,
