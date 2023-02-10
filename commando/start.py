@@ -17,15 +17,19 @@ class start(commands.Cog):
             userid = ctx.author.id
             cid = ctx.channel.id
 
-            if match['matchhostid'] == userid and match['matchstarted'] == False:
+            if match['matchhostid'] == userid and match['matchstarted'] == False and match['matchtotalplayer'] > 1:
                 await dbfunc.setBoolValue('matchstarted', match, cid, True, 'matchid')
                 await shufflestart(ctx)
                 await ctx.send(f"<@{userid}>'s match has started")
-            elif match['matchhostid'] != cid:
+            elif match['matchhostid'] != cid: 
                 await ctx.send(f'**{username}**, you are not the host')
-            elif match['matchhoststarted'] == True:
+            elif match['matchhoststarted'] == True: 
                 await ctx.send(f'**{username}**, game has already been started')
-                
+            elif match['matchtotalplayer'] == 1:
+                if userid == 757508305256972338:
+                    await ctx.mention('there is only you bruh')
+                else:
+                    await ctx.send(f'**{username}**, find some friends that doesnt exist?')
             
         except Exception as e:
             print(e)
