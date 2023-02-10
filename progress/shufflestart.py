@@ -3,7 +3,7 @@ from progress.deck import *
 from progress.itemlist import card_list
 
 async def shufflestart(ctx):
-    dbfunc = self.bot.database_handler
+    dbfunc = ctx.bot.database_handler
     userid = ctx.author.id
     cid = ctx.channel.id
     is_done = False
