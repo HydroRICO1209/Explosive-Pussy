@@ -14,7 +14,7 @@ class test2(commands.Cog):
             deck = await Deck(ctx)
             await ctx.send(f'''
 __DECK__
-matchid: {deck['matchid']}
+matchid: {ctx.channel.id}
 card1: {deck['card1']}
 card2: {deck['card2']}
 card3: {deck['card3']}
