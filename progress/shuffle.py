@@ -6,9 +6,10 @@ async def shufflestart(ctx):
     dbfunc = ctx.bot.database_handler
     userid = ctx.author.id
     cid = ctx.channel.id
-    is_done = False
+    
     
     for card in card_list:
+        is_done = False
         while is_done == False:
             deck = await Deck(ctx)
             randnum = random.randint(1,8)
