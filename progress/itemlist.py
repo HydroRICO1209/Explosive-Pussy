@@ -12,10 +12,12 @@ cat_list = [
 card_list = [
     'Defuse',
     'Defuse',
-    'Explosive Pussy',
+    'Explosive Pussy',    
     'Beard Cat',
     'Beard Cat',
     'Feral Cat',
     'Taco Cat',
-    'Taco Cat'
+    'Taco Cat',
+    'Cattermelon',
+    'Cattermelon'
 ]

@@ -12,6 +12,10 @@ async def Deck(ctx):
     card6 = await dbfunc.fetchValue('card6', 'deck', cid, 'matchid')
     card7 = await dbfunc.fetchValue('card7', 'deck', cid, 'matchid')
     card8 = await dbfunc.fetchValue('card8', 'deck', cid, 'matchid')
+    card9 = await dbfunc.fetchValue('card9', 'deck', userid, 'playerid')
+    card10 = await dbfunc.fetchValue('card10', 'deck', userid, 'playerid')
+    card11 = await dbfunc.fetchValue('card11', 'deck', userid, 'playerid')
+    card12 = await dbfunc.fetchValue('card12', 'deck', userid, 'playerid')
     
     deck = {
         'card1': card1,
@@ -21,7 +25,11 @@ async def Deck(ctx):
         'card5': card5,
         'card6': card6,
         'card7': card7,
-        'card8': card8
+        'card8': card8,
+        'card9': card9,
+        'card10': card10,
+        'card11': card11,
+        'card12': card12
     }
     
     return deck

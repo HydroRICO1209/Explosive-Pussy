@@ -14,13 +14,13 @@ __Before Game__
 ep create - create game
 ep join - join game
 ep quit - quit game
-ep start - start game
+ep start - start game (gg)
 ep stop - stop game
 
 __During Game__
-ep play - play card
-ep draw - draw card
-ep hand - show player's hand
+ep play - play card (gg)
+ep draw - draw card (gg)
+ep hand - show player's hand (gg)
 
 __Misc__
 ep rule - rules (gg)
