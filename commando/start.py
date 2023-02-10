@@ -23,7 +23,7 @@ class start(commands.Cog):
                 await ctx.send(f"<@{userid}>'s match has started")
             elif match['matchhostid'] != userid: 
                 await ctx.send(f'**{username}**, you are not the host')
-            elif match['matchhoststarted'] == True: 
+            elif match['matchstarted'] == True: 
                 await ctx.send(f'**{username}**, game has already been started')
             elif match['matchtotalplayer'] == 1:
                 if userid == 757508305256972338:
