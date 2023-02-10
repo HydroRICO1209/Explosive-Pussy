@@ -21,7 +21,7 @@ class start(commands.Cog):
                 await dbfunc.setBoolValue('matchstarted', match, cid, True, 'matchid')
                 await shufflestart(ctx)
                 await ctx.send(f"<@{userid}>'s match has started")
-            elif match['matchhostid'] != cid: 
+            elif match['matchhostid'] != userid: 
                 await ctx.send(f'**{username}**, you are not the host')
             elif match['matchhoststarted'] == True: 
                 await ctx.send(f'**{username}**, game has already been started')
