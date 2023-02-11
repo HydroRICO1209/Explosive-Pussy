@@ -21,8 +21,8 @@ class create(commands.Cog):
         if created == []:
             #deck table
             await self.bot.db.execute('''
-INSERT INTO deck (matchid, card1, card2, card3, card4, card5, card6, card7, card8)
-VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo','rip bozo')
+INSERT INTO deck (matchid, cardlist)
+VALUES ($1, ['rip bozo'])
 ''',cid)
             
             #match table
@@ -33,14 +33,14 @@ VALUES ($1, $2, False, 1)
             
             #playercard table
             await self.bot.db.execute('''
-INSERT INTO playercard (playerid, card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12)
-VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo', 'rip bozo')
+INSERT INTO playercard (playerid, player_cardlist)
+VALUES ($1, ['rip bozo'])
 ''',userid)
 
             #playerlist table
             await self.bot.db.execute('''
-INSERT INTO playerlist (matchid, player1id, player2id, player3id, player4id)
-VALUES ($1, $2, 1, 1, 1)
+INSERT INTO playerlist (matchid, player_list)
+VALUES ($1, [$2])
 ''',cid, userid)
 
             await ctx.send(f'Successfully created a room by **{username}**')
