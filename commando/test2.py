@@ -19,6 +19,7 @@ class test2(commands.Cog):
             fetch_query = f'SELECT namelist FROM test WHEREmatchid = $1'
             answer = await self.bot.db.fetchval(fetch_query, cid)
             await ctx.send(f'datatype: {type(answer), data: {answer}}')
+            await ctx.send(f'datatype: {type(answer[0]), data: {answer[0]}}')
         else:
             await ctx.send('Would you mind fucking off?')
 async def setup(bot):
