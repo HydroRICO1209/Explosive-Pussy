@@ -15,7 +15,7 @@ class test2(commands.Cog):
             userid = ctx.author.id
             NewINT = [1,2,3,4]
             
-            await dbfunc.setIntValue('namelist', 'test', cid, NewINT, 'matchid')
+            await dbfunc.setStrValue('namelist', 'test', cid, NewINT, 'matchid')
             fetch_query = f'SELECT namelist FROM test WHEREmatchid = $1'
             answer = await self.bot.db.fetchval(fetch_query, cid)
             await ctx.send(f'datatype: {type(answer), data: {answer}}')
