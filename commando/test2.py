@@ -8,22 +8,17 @@ class test2(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 1, commands.BucketType.user)
-    async def test2(self, ctx):
+    async def test2(self, ctx, arg):
         if ctx.author.id == 757508305256972338:
-            await shufflestart(ctx)
-            deck = await Deck(ctx)
-            await ctx.send(f'''
-__DECK__
-matchid: {ctx.channel.id}
-card1: {deck['card1']}
-card2: {deck['card2']}
-card3: {deck['card3']}
-card4: {deck['card4']}
-card5: {deck['card5']}
-card6: {deck['card6']}
-card7: {deck['card7']}
-card8: {deck['card8']}
-''')
+            dbfunc = self.bot.database_handler
+            cid = ctx.channel.id
+            userid = ctx.author.id
+            NewINT = [1,2,3,4]
+            
+            await dbfunc.setIntValue('namelist', 'test', cid, NewINT, 'matchid')
+            fetch_query = f'SELECT namelist FROM test WHEREmatchid = $1'
+            answer = await self.bot.db.fetchval(fetch_query, cid)
+            await ctx.send(f'datatype: {type(answer), data: {answer}}')
         else:
             await ctx.send('Would you mind fucking off?')
 async def setup(bot):

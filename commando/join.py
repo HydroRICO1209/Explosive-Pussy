@@ -27,14 +27,9 @@ class join(commands.Cog):
             await ctx.send(f'Too late **{username}**, game started')
 
         #find empty seat
-        elif len(playerlist['playerlist']) < 4:
+        elif match['matchtotalplayer'] < 4:
             newlist = playerlist['player_list'].append(userid)
-            await dbfunc.setIntValue('player2id', 'playerlist', cid, newlist, 'matchid')
-            has_joined = True
-        else:
-            await ctx.send(f'**{username}**, the game is full')
-        
-        if has_joined == True:
+            await dbfunc.setIntValue('player_list', 'playerlist', cid, newlist, 'matchid')
             await self.bot.db.execute('''
 INSERT INTO playercard (playerid, card1, card2, card3)
 VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo')
@@ -45,10 +40,9 @@ VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo')
             for playerid in playerlist['player_list']:
                 long += f'{n}) <@{playerid}>\n'
                 n+=1
-
             embed = discord.Embed(
                 description=f'''
-Game created by **{playerlist['player_list'][0]}**
+Game created by **<@{match['matchhostid']}>**
 {long}
 ''',
                 color=discord.Color.blue())
@@ -56,7 +50,9 @@ Game created by **{playerlist['player_list'][0]}**
             embed.add_field(name='Link', value='[Offcial server](https://discord.gg/ACCYFpPYAj)')
             embed.set_footer(text='Go grab some drinks')
             await ctx.send(embed=embed)
-
+            
+        elif len(playerlist['playerlist']) >= 4:
+            await ctx.send(f'**{username}**, the game is full')
 
 async def setup(bot):
     await bot.add_cog(join(bot))

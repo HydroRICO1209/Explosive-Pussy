@@ -16,36 +16,26 @@ class MyCog(commands.Cog):
         cid = ctx.channel.id
         match = await Match(ctx)
         playerlist = await Playerlist(ctx)
-        is_quitting = False
+        
         created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', cid)
         
         if created == []:
             await ctx.send(f'**{username}**, game has not been created')
         else:
+            #host
             if userid == match['matchhostid']:
                 await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
-                if userid == playerlist['player1id']:
+                #is member
+                if userid in playerlist['player_list']:
                     await dbfunc.setIntValue('player1id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting = True
-                elif userid == playerlist['player2id']:
-                    await dbfunc.setIntValue('player2id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting = True
-                elif userid == playerlist['player3id']:
-                    await dbfunc.setIntValue('player3id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting = True
-                elif userid == playerlist['player4id']:
-                    await dbfunc.setIntValue('player4id', 'playerlist', cid, 1, 'matchid')
-                    is_quitting = True
-                else:
-                    await ctx.send(f'**{username}**, you are not in the game')
-
-            if is_quitting == True:
-                await self.bot.db.execute('''
+                    await self.bot.db.execute('''
 DELETE FROM playercard WHERE playerid = $1
 ''',userid)
-                await ctx.send(f'**{username}**, you had left the game successfully')
-
+                    await ctx.send(f'**{username}**, you had left the game successfully')
+                else:
+                    #troller
+                    await ctx.send(f'**{username}**, you are not in the game')
 
 async def setup(bot):
     await bot.add_cog(MyCog(bot))
