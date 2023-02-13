@@ -8,7 +8,7 @@ class test2(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 1, commands.BucketType.user)
-    async def test2(self, ctx, arg):
+    async def test2(self, ctx):
         if ctx.author.id == 757508305256972338:
             dbfunc = self.bot.database_handler
             cid = ctx.channel.id
