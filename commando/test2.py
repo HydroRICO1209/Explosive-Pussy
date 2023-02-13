@@ -14,7 +14,7 @@ class test2(commands.Cog):
             cid = ctx.channel.id
             userid = ctx.author.id
             
-            fetch_query = f'SELECT namelist FROM test WHERE matchid = $1'
+            fetch_query = f'SELECT fuck FROM test WHERE matchid = $1'
             answer = await self.bot.db.fetchval(fetch_query, cid)
             await ctx.send(f'1)datatype: {type(answer)}, data: {answer}')
             await ctx.send(f'2)datatype: {type(answer[0])}, data: {answer[0]}')
