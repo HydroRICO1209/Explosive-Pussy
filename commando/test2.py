@@ -20,7 +20,7 @@ class test2(commands.Cog):
             await ctx.send(f'2)datatype: {type(answer[0])}, data: {answer[0]}')
             
             idk = ['whatever', ' i dont care', 'anymore']
-            await dbfunc.setStrValue('fuck', 'test', cid, NewSTR, 'matchid')
+            await dbfunc.setStrValue('fuck', 'test', cid, idk, 'matchid')
             
             fetch_query = f'SELECT fuckyou FROM test WHERE matchid = $1'
             answer = await self.bot.db.fetchval(fetch_query, cid)
