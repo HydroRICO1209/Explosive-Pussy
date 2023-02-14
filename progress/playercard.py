@@ -3,10 +3,10 @@ async def Playercard(ctx):
 
     userid = ctx.author.id
     
-    player_cardlist = await dbfunc.fetchValue('player_cardlist', 'playercard', userid, 'playerid')
+    playercard_list = await dbfunc.fetchValue('playercard_list', 'playercard', userid, 'playerid')
     
     playercard = {
-        'player_cardlist': player_cardlist
+        'playercard_list': playercard_list
     }
     
     return playercard
