@@ -33,7 +33,7 @@ VALUES ($1, $2, False, 1)
             
             #playercard table
             await self.bot.db.execute('''
-INSERT INTO playercard (playerid, player_cardlist)
+INSERT INTO playercard (playerid, playercard_list)
 VALUES ($1, ['rip bozo'])
 ''',userid)
 
