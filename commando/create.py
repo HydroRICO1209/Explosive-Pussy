@@ -41,7 +41,7 @@ VALUES ($1, ['rip bozo'])
             await self.bot.db.execute('''
 INSERT INTO playerlist (matchid, player_list)
 VALUES ($1, [$2])
-''',cid, userid)
+''',cid, str(userid))
 
             await ctx.send(f'Successfully created a room by **{username}**')
 
