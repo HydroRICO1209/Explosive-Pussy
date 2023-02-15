@@ -19,7 +19,7 @@ class join(commands.Cog):
         has_joined = False
         
         #game started/ joined
-        if playerlist['player_list'][0] == None:
+        if playerlist['player_list'] == None:
             await ctx.send(f'**{username}**, game has not been created.')
         elif userid in playerlist['player_list']:
             await ctx.send(f'**{username}**, you are already in there')
