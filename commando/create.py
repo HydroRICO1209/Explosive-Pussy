@@ -22,7 +22,7 @@ class create(commands.Cog):
             #deck table
             await self.bot.db.execute('''
 INSERT INTO deck (matchid, cardlist)
-VALUES ($1, ['rip bozo'])
+VALUES ($1, {'rip bozo'})
 ''',cid)
             
             #match table
@@ -40,7 +40,7 @@ VALUES ($1, ['rip bozo'])
             #playerlist table
             await self.bot.db.execute('''
 INSERT INTO playerlist (matchid, player_list)
-VALUES ($1, [$2])
+VALUES ($1, {$2})
 ''',cid, userid)
             
             await ctx.send(f'Successfully created a room by **{username}**')
