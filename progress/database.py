@@ -33,3 +33,8 @@ class Database:
         #item, tablename, id, number, idtype
         update_query = f'UPDATE {tablename} SET {item} = $1 WHERE {idtype} = $2'
         await self.bot.db.execute(update_query, bool(value), int(id))
+    
+    async def setListValue(self, item, tablename, id, value, idtype):
+        #item, tablename, id, number, idtype
+        update_query = f'UPDATE {tablename} SET {item} = $1 WHERE {idtype} = $2'
+        await self.bot.db.execute(update_query, list(value), int(id))
