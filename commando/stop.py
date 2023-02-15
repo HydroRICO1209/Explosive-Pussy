@@ -33,10 +33,10 @@ WHERE matchid = $1
 
 
             #playercard table
-            p1 = playerlist['player1id']
-            p2 = playerlist['player2id']
-            p3 = playerlist['player3id']
-            p4 = playerlist['player4id']
+            p1 = playerlist['player_list'][0]
+            p2 = playerlist['player_list'][1]
+            p3 = playerlist['player_list'][2]
+            p4 = playerlist['player_list'][3]
             
             if match['matchtotalplayer'] >= 1:
                 await self.bot.db.execute('''
