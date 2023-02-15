@@ -31,8 +31,8 @@ class join(commands.Cog):
             newlist = playerlist['player_list'].append(userid)
             await dbfunc.setStrValue('player_list', 'playerlist', cid, newlist, 'matchid')
             await self.bot.db.execute('''
-INSERT INTO playercard (playerid, card1, card2, card3)
-VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo')
+INSERT INTO playercard (playerid, player_cardlist)
+VALUES ($1, [])
 ''',userid)
             await ctx.send(f'**{username}** joined')
             
