@@ -21,14 +21,14 @@ class join(commands.Cog):
         #game started/ joined
         if playerlist['player_list'[0]] == None:
             await ctx.send(f'**{username}**, game has not been created.')
-        elif str(userid) in playerlist['player_list']:
+        elif userid in playerlist['player_list']:
             await ctx.send(f'**{username}**, you are already in there')
         elif match['matchstarted'] == True:
             await ctx.send(f'Too late **{username}**, game started')
 
         #find empty seat
         elif match['matchtotalplayer'] < 4:
-            newlist = playerlist['player_list'].append(str(userid))
+            newlist = playerlist['player_list'].append(userid)
             await dbfunc.setStrValue('player_list', 'playerlist', cid, newlist, 'matchid')
             await self.bot.db.execute('''
 INSERT INTO playercard (playerid, card1, card2, card3)
@@ -38,7 +38,7 @@ VALUES ($1, 'rip bozo', 'rip bozo', 'rip bozo')
             
             n=1
             for playerid in playerlist['player_list']:
-                long += f'{n}) <@{int(playerid)}>\n'
+                long += f'{n}) <@{playerid}>\n'
                 n+=1
             embed = discord.Embed(
                 description=f'''

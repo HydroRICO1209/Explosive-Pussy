@@ -27,7 +27,7 @@ class MyCog(commands.Cog):
                 await ctx.send(f'**{username}**, you do know `ep stop` exist for some reason?')
             else:
                 #is member
-                if str(userid) in playerlist['player_list']:
+                if userid in playerlist['player_list']:
                     await dbfunc.setStrValue('player1id', 'playerlist', cid, 1, 'matchid')
                     await self.bot.db.execute('''
 DELETE FROM playercard WHERE playerid = $1
