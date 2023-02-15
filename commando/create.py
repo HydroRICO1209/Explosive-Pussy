@@ -19,7 +19,7 @@ class create(commands.Cog):
         created = await self.bot.db.fetch('SELECT * FROM match WHERE matchid = $1', (cid))
 
         if created == []:
-            ripbozo_list = ['rip bozo']
+            ripbozo_list = []
             #deck table
             await self.bot.db.execute('''
 INSERT INTO deck (matchid, cardlist)

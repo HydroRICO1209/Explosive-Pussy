@@ -32,28 +32,27 @@ WHERE matchid = $1
 ''',cid)
 
 
-            #playercard table
-            p1 = playerlist['player_list'][0]
-            p2 = playerlist['player_list'][1]
-            p3 = playerlist['player_list'][2]
-            p4 = playerlist['player_list'][3]
-            
+            #playercard table            
             if match['matchtotalplayer'] >= 1:
+                p1 = playerlist['player_list'][0]
                 await self.bot.db.execute('''
 DELETE FROM playercard
 WHERE playerid = $1
 ''',p1)
                 if match['matchtotalplayer'] >= 2:
+                    p2 = playerlist['player_list'][1]
                     await self.bot.db.execute('''
 DELETE FROM playercard
 WHERE playerid = $1
 ''',p2)
                     if match['matchtotalplayer'] >= 3:
+                        p3 = playerlist['player_list'][2]
                         await self.bot.db.execute('''
 DELETE FROM playercard
 WHERE playerid = $1
 ''',p3)
                         if match['matchtotalplayer'] >= 4:
+                            p4 = playerlist['player_list'][3]
                             await self.bot.db.execute('''
 DELETE FROM playercard
 WHERE playerid = $1
