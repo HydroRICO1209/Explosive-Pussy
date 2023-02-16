@@ -35,8 +35,8 @@ VALUES ($1, $2, False, 1)
             #playercard table
             await self.bot.db.execute('''
 INSERT INTO playercard (playerid, player_cardlist)
-VALUES ($1, ['rip', 'bozo'])
-''',userid)
+VALUES ($1, $2)
+''',userid, hehe)
             
             userid_list = [userid, 0, 0, 0]
             #playerlist table
