@@ -34,7 +34,8 @@ WHERE matchid = $1
 
             #playercard table            
             if match['matchtotalplayer'] >= 1:
-                await ctx.send(playerlist['player_list'])
+                idk = playerlist['player_list']
+                await ctx.send(f'hehe {idk}')
                 p1 = playerlist['player_list'][0]
                 await self.bot.db.execute('''
 DELETE FROM playercard

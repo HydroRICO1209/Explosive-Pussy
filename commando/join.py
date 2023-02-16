@@ -36,7 +36,7 @@ INSERT INTO playercard (playerid, player_cardlist)
 VALUES ($1, $2)
 ''',userid, hehe)
             await ctx.send(f'**{username}** joined')
-            
+            long = ''
             n=1
             for playerid in playerlist['player_list']:
                 long += f'{n}) <@{playerid}>\n'
