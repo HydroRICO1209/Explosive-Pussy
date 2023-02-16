@@ -23,7 +23,7 @@ class create(commands.Cog):
             #deck table
             await self.bot.db.execute('''
 INSERT INTO deck (matchid, cardlist)
-VALUES ($1, ['rip', 'bozo'])
+VALUES ($1, {'rip','bozo'})
 ''',cid)
             
             #match table
