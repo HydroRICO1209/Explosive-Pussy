@@ -11,11 +11,11 @@ class help(commands.Cog):
     async def help(self, ctx):
         await ctx.send('''
 __Before Game__
-ep create - create game
-ep join - join game
-ep quit - quit game
+ep create - create game (gg)
+ep join - join game (gg)
+ep quit - quit game (gg)
 ep start - start game (gg)
-ep stop - stop game
+ep stop - stop game (gg)
 
 __During Game__
 ep play - play card (gg)
