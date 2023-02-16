@@ -30,10 +30,11 @@ class join(commands.Cog):
         elif match['matchtotalplayer'] < 4:
             newlist = playerlist['player_list'].append(userid)
             await dbfunc.setStrValue('player_list', 'playerlist', cid, newlist, 'matchid')
+            hehe = ['rip', 'bozo']
             await self.bot.db.execute('''
 INSERT INTO playercard (playerid, player_cardlist)
-VALUES ($1, [])
-''',userid)
+VALUES ($1, $2)
+''',userid, hehe)
             await ctx.send(f'**{username}** joined')
             
             n=1
