@@ -23,8 +23,8 @@ class create(commands.Cog):
             #deck table
             await self.bot.db.execute('''
 INSERT INTO deck (matchid, cardlist)
-VALUES ($1, $2)
-''',cid, list())
+VALUES ($1, ['rip', 'bozo'])
+''',cid)
             
             #match table
             await self.bot.db.execute('''
@@ -35,10 +35,10 @@ VALUES ($1, $2, False, 1)
             #playercard table
             await self.bot.db.execute('''
 INSERT INTO playercard (playerid, player_cardlist)
-VALUES ($1, $2)
-''',userid, list())
+VALUES ($1, ['rip', 'bozo'])
+''',userid)
             
-            userid_list = [userid]
+            userid_list = [userid, 0, 0, 0]
             #playerlist table
             await self.bot.db.execute('''
 INSERT INTO playerlist (matchid, player_list)
