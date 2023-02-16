@@ -38,7 +38,7 @@ INSERT INTO playercard (playerid, player_cardlist)
 VALUES ($1, $2)
 ''',userid, hehe)
             
-            userid_list = [userid, 0, 0, 0]
+            userid_list = [userid]
             #playerlist table
             await self.bot.db.execute('''
 INSERT INTO playerlist (matchid, player_list)
